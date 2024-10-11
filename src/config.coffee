@@ -23,5 +23,8 @@ exports.parse = (path) ->
   # Set defaults
   for key of default_options
     config[key] ?= default_options[key]
+  if process.env["MINA_DEPLOY_BRANCH"]
+    console.log("Using "+ process.env["MINA_DEPLOY_BRANCH"] + " branch for deployment")
+    config['branch'] = process.env["MINA_DEPLOY_BRANCH"]
 
   config
